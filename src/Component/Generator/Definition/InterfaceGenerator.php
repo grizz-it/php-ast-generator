@@ -31,20 +31,40 @@ class InterfaceGenerator implements DefinitionGeneratorInterface
     private $includeParent;
 
     /**
+     * Whether the parents methods should be inherited.
+     *
+     * @var bool
+     */
+    private $includeParentMethods;
+
+    /**
+     * Whether the private methods should be inherited.
+     *
+     * @var bool
+     */
+    private $includePrivateMethods;
+
+    /**
      * Constructor.
      *
      * @param bool $includeParent
      * @param MethodGeneratorInterface|null $methodGenerator
      * @param ConstantGeneratorInterface|null $constantGenerator
+     * @param bool $includeParentMethods
+     * @param bool $includePrivateMethods
      */
     public function __construct(
         bool $includeParent,
         ?MethodGeneratorInterface $methodGenerator,
-        ?ConstantGeneratorInterface $constantGenerator
+        ?ConstantGeneratorInterface $constantGenerator,
+        bool $includeParentMethods = false,
+        bool $includePrivateMethods = true
     ) {
         $this->includeParent = $includeParent;
         $this->methodGenerator = $methodGenerator;
         $this->constantGenerator = $constantGenerator;
+        $this->includeParentMethods = $includeParentMethods;
+        $this->includePrivateMethods = $includePrivateMethods;
     }
 
     /**
@@ -67,7 +87,11 @@ class InterfaceGenerator implements DefinitionGeneratorInterface
             )
         );
 
-        $methods = $this->extractMethods($reflection);
+        $methods = $this->extractMethods(
+            $reflection,
+            $this->includeParentMethods,
+            $this->includePrivateMethods
+        );
 
         foreach ($methods as $key => $method) {
             if (in_array($method->getName(), ['__construct', '__destruct'])) {

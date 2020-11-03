@@ -44,6 +44,20 @@ class ClassGenerator implements DefinitionGeneratorInterface
     private $includeInterfaces;
 
     /**
+     * Whether the parents methods should be inherited.
+     *
+     * @var bool
+     */
+    private $includeParentMethods;
+
+    /**
+     * Whether the private methods should be inherited.
+     *
+     * @var bool
+     */
+    private $includePrivateMethods;
+
+    /**
      * Constructor.
      *
      * @param bool $includeParent
@@ -59,7 +73,9 @@ class ClassGenerator implements DefinitionGeneratorInterface
         ?ReferenceGeneratorInterface $referenceGenerator,
         ?MethodGeneratorInterface $methodGenerator,
         ?ConstantGeneratorInterface $constantGenerator,
-        ?PropertyGeneratorInterface $propertyGenerator
+        ?PropertyGeneratorInterface $propertyGenerator,
+        bool $includeParentMethods = false,
+        bool $includePrivateMethods = true
     ) {
         $this->includeParent = $includeParent;
         $this->includeInterfaces = $includeInterfaces;
@@ -67,6 +83,8 @@ class ClassGenerator implements DefinitionGeneratorInterface
         $this->methodGenerator = $methodGenerator;
         $this->constantGenerator = $constantGenerator;
         $this->propertyGenerator = $propertyGenerator;
+        $this->includeParentMethods = $includeParentMethods;
+        $this->includePrivateMethods = $includePrivateMethods;
     }
 
     /**
@@ -102,7 +120,11 @@ class ClassGenerator implements DefinitionGeneratorInterface
         $class->setIsTrait($reflection->isTrait());
         $class->setImplements(...$interfaces);
         $class->setTraits(...$this->extractTraits($reflection));
-        $class->setMethods(...$this->extractMethods($reflection));
+        $class->setMethods(...$this->extractMethods(
+            $reflection,
+            $this->includeParentMethods,
+            $this->includePrivateMethods
+        ));
         $class->setConstants(...$this->extractConstants($reflection));
         $class->setProperties(...$this->extractProperties($reflection));
 

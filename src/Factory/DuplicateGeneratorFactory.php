@@ -37,7 +37,9 @@ class DuplicateGeneratorFactory
         bool $includeReferences,
         bool $includeMethods,
         bool $includeConstants,
-        bool $includeProperties
+        bool $includeProperties,
+        bool $includeParentMethods = false,
+        bool $includePrivateMethods = true
     ): DefinitionGeneratorInterface {
         $referenceGenerator = $includeReferences ?
             new ReferenceGenerator() :
@@ -59,7 +61,9 @@ class DuplicateGeneratorFactory
             new InterfaceGenerator(
                 $includeParent,
                 $methodGenerator,
-                $constantGenerator
+                $constantGenerator,
+                $includeParentMethods,
+                $includePrivateMethods
             ),
             new ClassGenerator(
                 $includeParent,
@@ -67,7 +71,9 @@ class DuplicateGeneratorFactory
                 $referenceGenerator,
                 $methodGenerator,
                 $constantGenerator,
-                $propertyGenerator
+                $propertyGenerator,
+                $includeParentMethods,
+                $includePrivateMethods
             )
         );
     }

@@ -27,7 +27,9 @@ class InterfaceGeneratorFactory
     public function create(
         bool $includeParent,
         bool $includeMethods,
-        bool $includeConstants
+        bool $includeConstants,
+        bool $includeParentMethods = false,
+        bool $includePrivateMethods = true
     ): DefinitionGeneratorInterface {
         $methodGenerator = $includeMethods ?
             new MethodGenerator(new VariableGenerator()) :
@@ -40,7 +42,9 @@ class InterfaceGeneratorFactory
         return new InterfaceGenerator(
             $includeParent,
             $methodGenerator,
-            $constantGenerator
+            $constantGenerator,
+            $includeParentMethods,
+            $includePrivateMethods
         );
     }
 }

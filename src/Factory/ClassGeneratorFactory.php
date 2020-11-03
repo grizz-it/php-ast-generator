@@ -35,7 +35,9 @@ class ClassGeneratorFactory
         bool $includeReferences,
         bool $includeMethods,
         bool $includeConstants,
-        bool $includeProperties
+        bool $includeProperties,
+        bool $includeParentMethods = false,
+        bool $includePrivateMethods = true
     ): DefinitionGeneratorInterface {
         $referenceGenerator = $includeReferences ?
             new ReferenceGenerator() :
@@ -59,7 +61,9 @@ class ClassGeneratorFactory
             $referenceGenerator,
             $methodGenerator,
             $constantGenerator,
-            $propertyGenerator
+            $propertyGenerator,
+            $includeParentMethods,
+            $includePrivateMethods
         );
     }
 }

@@ -20,21 +20,29 @@ trait ExtractMethodsTrait
      */
     private $methodGenerator;
 
-    /**
-     * Retrieves the methods.
-     *
-     * @param ReflectionClass $reflection
-     *
-     * @return MethodInterface[]
-     */
-    private function extractMethods(ReflectionClass $reflection): array
-    {
+     /**
+      * Retrieves the methods.
+      *
+      * @param ReflectionClass $reflection
+      * @param boolean $includeParent
+      * @param boolean $includePrivate
+
+      * @return MethodInterface[]
+      */
+    private function extractMethods(
+        ReflectionClass $reflection,
+        bool $includeParent,
+        bool $includePrivate
+    ): array {
         $methods = [];
         if ($this->methodGenerator !== null) {
             foreach ($reflection->getMethods() as $method) {
                 if (
-                    $method->getDeclaringClass()
-                        ->getName() === $reflection->getName()
+                    (
+                        $includeParent ||
+                        $method->getDeclaringClass()->getName() === $reflection
+                            ->getName()
+                    ) && ($includePrivate || $method->isPublic())
                 ) {
                     $methods[] = $this->methodGenerator->generate($method);
                 }
