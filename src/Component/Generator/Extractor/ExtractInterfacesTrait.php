@@ -29,6 +29,10 @@ trait ExtractInterfacesTrait
             );
         }
 
+        array_walk($interfaces, function (string $interface) {
+            return '\\' . trim($interface, '\\');
+        });
+
         return $interfaces;
     }
 }

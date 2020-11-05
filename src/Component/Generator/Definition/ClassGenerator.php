@@ -100,7 +100,8 @@ class ClassGenerator implements DefinitionGeneratorInterface
         $parentClass = '';
         if ($this->includeParent) {
             $parentClass = $reflection->getParentClass();
-            $parentClass = $parentClass ? $parentClass->getName() : '';
+            $parentClass = $parentClass ?
+                '\\' . trim($parentClass->getName(), '\\') : '';
         }
 
         $class = new ClassDefinition(

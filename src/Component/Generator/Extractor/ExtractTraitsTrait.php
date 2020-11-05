@@ -33,7 +33,7 @@ trait ExtractTraitsTrait
         if ($this->referenceGenerator !== null) {
             foreach ($reflection->getTraits() as $trait) {
                 $traits[] = $this->referenceGenerator->generate(
-                    $trait->getName()
+                    '\\' . trim($trait->getName(), '\\')
                 );
             }
         }

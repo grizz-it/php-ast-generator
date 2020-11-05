@@ -25,13 +25,14 @@ class VariableGenerator implements VariableGeneratorInterface
     public function generate(
         ReflectionParameter $parameter
     ): VariableInterface {
+        $type = $parameter->getType();
         $variable = new Variable(
             $parameter->getName(),
             (
                 $parameter->allowsNull() && !$parameter->isOptional() ?
                 '?' :
                 ''
-            ) . $parameter->getType()->getName(),
+            ) . ($type->isBuiltin() ? '' : '\\') . $type->getName(),
             '',
             (
                 $parameter->isDefaultValueAvailable() ?

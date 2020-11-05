@@ -36,7 +36,7 @@ trait ExtractPropertiesTrait
             foreach ($reflection->getProperties() as $property) {
                 if (
                     $property->getDeclaringClass()
-                    ->getName() === $reflection->getName()
+                        ->getName() === $reflection->getName()
                 ) {
                     $properties[] = $this->propertyGenerator->generate(
                         $property,
