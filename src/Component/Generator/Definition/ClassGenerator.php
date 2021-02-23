@@ -34,28 +34,28 @@ class ClassGenerator implements DefinitionGeneratorInterface
      *
      * @var bool
      */
-    private $includeParent;
+    private bool $includeParent;
 
     /**
      * Determines whether interfaces should be copied.
      *
      * @var bool
      */
-    private $includeInterfaces;
+    private bool $includeInterfaces;
 
     /**
      * Whether the parents methods should be inherited.
      *
      * @var bool
      */
-    private $includeParentMethods;
+    private bool $includeParentMethods;
 
     /**
      * Whether the private methods should be inherited.
      *
      * @var bool
      */
-    private $includePrivateMethods;
+    private bool $includePrivateMethods;
 
     /**
      * Constructor.
@@ -66,6 +66,8 @@ class ClassGenerator implements DefinitionGeneratorInterface
      * @param MethodGeneratorInterface|null $methodGenerator
      * @param ConstantGeneratorInterface|null $constantGenerator
      * @param PropertyGeneratorInterface|null $propertyGenerator
+     * @param bool $includeParentMethods
+     * @param bool $includePrivateMethods
      */
     public function __construct(
         bool $includeParent,

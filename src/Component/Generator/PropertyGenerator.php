@@ -25,7 +25,7 @@ class PropertyGenerator implements PropertyGeneratorInterface
      */
     public function generate(
         ReflectionProperty $property,
-        $defaultValue = null
+        mixed $defaultValue = null
     ): PropertyInterface {
         $type = method_exists($property, 'getType') ? $property->getType() : null;
         $astProperty = new Property(

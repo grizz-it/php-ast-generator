@@ -18,14 +18,14 @@ class DefinitionGenerator implements DefinitionGeneratorInterface
      *
      * @var DefinitionGeneratorInterface
      */
-    private $classGenerator;
+    private DefinitionGeneratorInterface $classGenerator;
 
     /**
      * Contains the interface generator.
      *
      * @var DefinitionGeneratorInterface
      */
-    private $interfaceGenerator;
+    private DefinitionGeneratorInterface $interfaceGenerator;
 
     /**
      * Constructor.

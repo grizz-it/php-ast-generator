@@ -21,6 +21,8 @@ class InterfaceGeneratorFactory
      * @param bool $includeParent
      * @param bool $includeMethods
      * @param bool $includeConstants
+     * @param bool $includeParentMethods
+     * @param bool $includePrivateMethods
      *
      * @return DefinitionGeneratorInterface
      */

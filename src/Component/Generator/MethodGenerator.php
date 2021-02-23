@@ -20,7 +20,7 @@ class MethodGenerator implements MethodGeneratorInterface
      *
      * @var VariableGeneratorInterface
      */
-    private $variableGenerator;
+    private VariableGeneratorInterface $variableGenerator;
 
     /**
      * Constructor

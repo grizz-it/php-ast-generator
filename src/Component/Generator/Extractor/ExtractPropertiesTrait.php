@@ -18,7 +18,7 @@ trait ExtractPropertiesTrait
      *
      * @var PropertyGeneratorInterface|null
      */
-    private $propertyGenerator;
+    private ?PropertyGeneratorInterface $propertyGenerator;
 
     /**
      * Retrieves the properties of the reflection object.

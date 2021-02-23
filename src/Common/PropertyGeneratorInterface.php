@@ -22,6 +22,6 @@ interface PropertyGeneratorInterface
      */
     public function generate(
         ReflectionProperty $property,
-        $defaultValue = null
+        mixed $defaultValue = null
     ): PropertyInterface;
 }

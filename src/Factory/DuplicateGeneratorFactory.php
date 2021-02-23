@@ -28,6 +28,8 @@ class DuplicateGeneratorFactory
      * @param bool $includeMethods
      * @param bool $includeConstants
      * @param bool $includeProperties
+     * @param bool $includeParentMethods
+     * @param bool $includePrivateMethods
      *
      * @return DefinitionGeneratorInterface
      */

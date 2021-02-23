@@ -18,7 +18,7 @@ trait ExtractTraitsTrait
      *
      * @var ReferenceGeneratorInterface|null
      */
-    private $referenceGenerator;
+    private ?ReferenceGeneratorInterface $referenceGenerator;
 
     /**
      * Retrieves the traits of the reflection object.

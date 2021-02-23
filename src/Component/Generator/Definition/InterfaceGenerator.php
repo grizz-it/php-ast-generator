@@ -28,21 +28,21 @@ class InterfaceGenerator implements DefinitionGeneratorInterface
      *
      * @var bool
      */
-    private $includeParent;
+    private bool $includeParent;
 
     /**
      * Whether the parents methods should be inherited.
      *
      * @var bool
      */
-    private $includeParentMethods;
+    private bool $includeParentMethods;
 
     /**
      * Whether the private methods should be inherited.
      *
      * @var bool
      */
-    private $includePrivateMethods;
+    private bool $includePrivateMethods;
 
     /**
      * Constructor.

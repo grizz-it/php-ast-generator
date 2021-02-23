@@ -11,7 +11,7 @@ class MockClass implements MockInterface
 {
     use MockTrait;
 
-    private $privateProperty = 'foo';
+    private string $privateProperty = 'foo';
 
     public static $publicStaticProperty;
 

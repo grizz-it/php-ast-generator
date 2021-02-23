@@ -9,6 +9,7 @@ namespace GrizzIt\PhpAstGenerator\Component\Generator\Extractor;
 
 use ReflectionClass;
 use GrizzIt\Ast\Common\Php\PropertyInterface;
+use GrizzIt\PhpAstGenerator\Common\ConstantGeneratorInterface;
 
 trait ExtractConstantsTrait
 {
@@ -17,7 +18,7 @@ trait ExtractConstantsTrait
      *
      * @var ConstantGeneratorInterface|null
      */
-    private $constantGenerator;
+    private ?ConstantGeneratorInterface $constantGenerator;
 
     /**
      * Retrieves the direct interfaces.

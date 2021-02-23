@@ -18,7 +18,7 @@ trait ExtractMethodsTrait
      *
      * @var MethodGeneratorInterface|null
      */
-    private $methodGenerator;
+    private ?MethodGeneratorInterface $methodGenerator;
 
      /**
       * Retrieves the methods.

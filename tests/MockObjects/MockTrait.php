@@ -9,7 +9,7 @@ namespace GrizzIt\PhpAstGenerator\Tests\MockObjects;
 
 trait MockTrait
 {
-    public $publicProperty = [];
+    public array $publicProperty = [];
 
     public function setPublicProperty(array $publicProperty): void
     {
